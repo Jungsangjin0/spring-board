@@ -1,5 +1,11 @@
 package diTest;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
@@ -31,6 +37,13 @@ public class DataSourceTest {
 	
 	@Test
 	public void dataSourceDITest() {
+		try {
+			Connection con = dataSource.getConnection();
+			log.info("con : {}", con);
+			assertNotNull(con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		log.info("dataSource : {}", dataSource);
 		log.info("factory : {}", factory);
 		log.info("sqlSession : {}", sqlSession);

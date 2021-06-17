@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <!-- taglib 추가 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +18,14 @@
 <body>
 	<jsp:include page="../common/sidebar.jsp"/>
 	<div class="content">
-		<div style="align-items: center; margin-left:600px;">
-			<table class="table" style="border-collapse: collapse;">
+		<div>
+			<table class="table" style="border-collapse: collapse;width:1200px;text-align: center;">
+				<colgroup>
+					<col width="15%">
+					<col width="20%">
+					<col width="40%">
+					<col width="15%">
+				</colgroup>
 				<thead>
 					<tr>
 						<th>번호</th>
@@ -28,20 +35,15 @@
 					<tr>
 				</thead>
 				<tbody class="board-tbody">
-				<!-- foreach -->
+			<!-- forEach로 변경된 body부분 -->		
+				<c:forEach items="${requestScope.list}" var="board">
 					<tr>
-						<td>1</td>
-						<td>이제곧바뀐다..</td>
-						<td>sj</td>
-						<td style="padding-left: 20px;">2021.06.15</td>
-					</tr>	
-					<tr>
-						<td>2</td>
-						<td>이제곧바뀐다..</td>
-						<td>sj</td>
-						<td style="padding-left: 20px;">2021.06.15</td>
-					</tr>
-				<!-- /foreach -->		
+						<td>${board.board_id}</td>
+						<td>${board.board_title}</td>
+						<td>${board.board_writer}</td>
+						<td>${board.board_date}</td>
+					</tr>					
+				</c:forEach>	
 				</tbody>
 			</table>
 		</div>

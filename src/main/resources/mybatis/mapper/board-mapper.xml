@@ -6,7 +6,7 @@
 
  <mapper namespace="board">
  
- 	<select id="selectList">
+ 	<select id="selectList" resultType="com.js.board.model.dto.BoardDTO">
  		SELECT 
  		       BOARD_ID
 			 , BOARD_CATEGORY
