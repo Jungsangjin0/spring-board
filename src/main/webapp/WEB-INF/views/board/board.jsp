@@ -17,7 +17,7 @@
 <body>
 	<jsp:include page="../common/sidebar.jsp"/>
 	<div class="content">
-		<div style="align-items: center;">
+		<div style="align-items: center; margin-left:600px;">
 			<table class="table" style="border-collapse: collapse;">
 				<thead>
 					<tr>
@@ -32,13 +32,13 @@
 					<tr>
 						<td>1</td>
 						<td>이제곧바뀐다..</td>
-						<td>정상진</td>
+						<td>sj</td>
 						<td style="padding-left: 20px;">2021.06.15</td>
 					</tr>	
 					<tr>
 						<td>2</td>
 						<td>이제곧바뀐다..</td>
-						<td>정상진</td>
+						<td>sj</td>
 						<td style="padding-left: 20px;">2021.06.15</td>
 					</tr>
 				<!-- /foreach -->		

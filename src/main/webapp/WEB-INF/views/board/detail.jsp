@@ -8,6 +8,8 @@
 </head>
 <body>
 <jsp:include page="../common/sidebar.jsp"/>
-	<h1>디테일페이지 ${requestScope.number}</h1>
+<div class="content">
+	<h1 style="margin:0 auto;">디테일페이지 ${requestScope.number}</h1>
+</div>
 </body>
 </html>

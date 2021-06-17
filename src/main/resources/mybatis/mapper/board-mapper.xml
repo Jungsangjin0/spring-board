@@ -6,4 +6,19 @@
 
  <mapper namespace="board">
  
+ 	<select id="selectList">
+ 		SELECT 
+ 		       BOARD_ID
+			 , BOARD_CATEGORY
+			 , BOARD_WRITER
+			 , BOARD_TITLE
+			 , BOARD_TEXT
+			 , BOARD_DATE
+		     , BOARD_REPLY
+			 , BOARD_LEVEL
+			 , BOARD_STATUS
+		FROM BOARD
+ 	</select>
+ 	
+ 	
  </mapper>
