@@ -27,3 +27,8 @@
 - controller, service, repository(리스트 전체 가져오는 코드) 작성
 - 설정파일(mybatis, datasource) 작성
 - boardList mapper 작성
+
+## 2021-06-18
+
+- 게시판 디테일페이지 작성
+- controller, service, repository, mapper 
