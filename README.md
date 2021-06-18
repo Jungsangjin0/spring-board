@@ -31,4 +31,4 @@
 ## 2021-06-18
 
 - 게시판 디테일페이지 작성
-- controller, service, repository, mapper 
+- controller, service, repository, mapper 작성
