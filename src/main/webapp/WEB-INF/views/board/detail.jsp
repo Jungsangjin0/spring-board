@@ -9,7 +9,8 @@
 <body>
 <jsp:include page="../common/sidebar.jsp"/>
 <div class="content">
-	<h1 style="margin:0 auto;">디테일페이지 ${requestScope.number}</h1>
+	${requestScope.board}
+	
 </div>
 </body>
 </html>

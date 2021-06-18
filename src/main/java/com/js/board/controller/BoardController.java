@@ -25,6 +25,11 @@ public class BoardController {
 		this.boardService = boardService;
 	}
 	
+	/*
+	 *board 리스트 페이지 접속 시 controller
+	 *@param model Model 객체
+	 *@return viewResolver에 전달할 view path String
+	 */
 	@RequestMapping(value ="/board", method = RequestMethod.GET)
 	public String board(Model model) {
 		
@@ -35,9 +40,17 @@ public class BoardController {
 		return "board/board";
 	}
 	
+	/*상세 페이지 controller
+	 *@param number 게시판 번호 
+	 *@return viewResolver에 전달할 view path String
+	 */
 	@RequestMapping(value = "/board/{number}", method = RequestMethod.GET)
 	public String detailBoard(@PathVariable int number, Model model) {
-		model.addAttribute("number", number);
+		
+		BoardDTO board = boardService.selectById(number);
+		model.addAttribute("board", board); 
+		log.info("board  : {}" , board);
+		
 		return "board/detail";
 	}
 }

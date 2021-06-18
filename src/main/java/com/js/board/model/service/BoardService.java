@@ -6,7 +6,10 @@ import com.js.board.model.dto.BoardDTO;
 
 public interface BoardService {
 	
-	/*select board*/
+	/*select board list*/
 	public List<BoardDTO> selectBoardList();
+
+	/*select board*/
+	public BoardDTO selectById(int number);
 
 }

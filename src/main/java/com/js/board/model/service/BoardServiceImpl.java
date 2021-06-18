@@ -21,11 +21,24 @@ public class BoardServiceImpl implements BoardService{
 		this.sqlSession = sqlSession;
 	}
 	
+	/*board list를 조회할 때 사용하는 service method
+	 * @return board List 정보 
+	 * */
 	@Override
 	public List<BoardDTO> selectBoardList() {
 		
-		
 		return boardRepository.selectBoardList(sqlSession);
+	}
+
+	/*
+	 * board를 조회할 때 사용하는 service method
+	 * @param number 게시판 번호
+	 * @return board 정보
+	 * */
+	@Override
+	public BoardDTO selectById(int number) {
+		
+		return boardRepository.selectById(number, sqlSession);
 	}
 
 }

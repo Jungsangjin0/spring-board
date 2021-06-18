@@ -8,7 +8,10 @@ import com.js.board.model.dto.BoardDTO;
 
 public interface BoardRepository {
 
-	/*select Board*/
+	/*select Board List*/
 	public List<BoardDTO> selectBoardList(SqlSessionTemplate sqlSession);
+	
+	/*select Board*/
+	public BoardDTO selectById(int number, SqlSessionTemplate sqlSession);
 	
 }

@@ -49,6 +49,7 @@
 		</div>
 	</div>
 	
+<!-- detail 페이지 이동 js -->
 <script type="text/javascript">
 	$(function(){
 		
