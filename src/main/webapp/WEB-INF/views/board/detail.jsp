@@ -131,9 +131,16 @@ table.table2 td {
 	
 	<script type="text/javascript">
 		$(function(){
+			
+			/*뒤로가기*/
 			$("#back").on("click", function(){
-				//location.href = "${pageContext.servletContext.contextPath}/board";
-				history.back();
+				location.href = "${pageContext.servletContext.contextPath}/board";
+			})
+			
+			/*수정하기*/
+			$("#modify").on("click", function() {
+				//location.href = "../modify/" + "${board.board_id}"	
+				location.href="${pageContext.servletContext.contextPath}/modify/" + "${board.board_id}"
 			})
 			
 		})

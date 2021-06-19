@@ -41,4 +41,15 @@ public class BoardServiceImpl implements BoardService{
 		return boardRepository.selectById(number, sqlSession);
 	}
 
+	/*
+	 * board를 수정할 때 사용하는 service method
+	 * @param board 게시물 수정정보가 담긴 객체
+	 * @return 
+	 * */
+	@Override
+	public void updateById(BoardDTO board) {
+		
+		boardRepository.updateById(board, sqlSession);
+	}
+
 }

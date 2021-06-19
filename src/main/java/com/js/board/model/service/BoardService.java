@@ -12,4 +12,7 @@ public interface BoardService {
 	/*select board*/
 	public BoardDTO selectById(int number);
 
+	/*update board*/
+	public void updateById(BoardDTO board);
+
 }

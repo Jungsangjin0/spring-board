@@ -13,5 +13,8 @@ public interface BoardRepository {
 	
 	/*select Board*/
 	public BoardDTO selectById(int number, SqlSessionTemplate sqlSession);
+
+	/*update Board*/
+	public int updateById(BoardDTO board, SqlSessionTemplate sqlSession);
 	
 }

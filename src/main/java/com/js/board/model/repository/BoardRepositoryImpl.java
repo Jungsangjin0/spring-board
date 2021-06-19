@@ -34,5 +34,17 @@ public class BoardRepositoryImpl implements BoardRepository{
 		
 		return sqlSession.selectOne("board.selectById", number);
 	}
+
+	/*
+	 * board update Repository method
+	 * @param board 수정할 보드정보 객체
+	 * @param sqlSession 쿼리문 실행할 객체
+	 * */
+	@Override
+	public int updateById(BoardDTO board, SqlSessionTemplate sqlSession) {
+		
+		
+		return sqlSession.update("board.updateById", board);
+	}
 	
 }

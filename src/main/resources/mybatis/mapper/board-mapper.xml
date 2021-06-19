@@ -31,6 +31,8 @@
 			 , BOARD_LEVEL
 			 , BOARD_STATUS
 		FROM BOARD
+		WHERE BOARD_LEVEL = 0
+		AND BOARD_STATUS = 'N'
  	</select>
  	
  	<select id="selectById" resultType="com.js.board.model.dto.BoardDTO" parameterType="_int">
@@ -46,7 +48,19 @@
 			 , BOARD_STATUS
 		FROM BOARD
 		WHERE BOARD_ID = #{id}
+		AND BOARD_LEVEL = 0
+		AND BOARD_STATUS = 'N'
  	</select>
+ 	
+ 	<update id="updateById" parameterType="com.js.board.model.dto.BoardDTO">
+ 		UPDATE 
+ 		    BOARD
+ 		SET 
+ 		    BOARD_TITLE = #{board_title}
+ 		  , BOARD_TEXT = #{board_text}
+ 		WHERE 
+ 		    BOARD_ID = #{board_id}
+ 	</update>
  	
  	
  </mapper>
