@@ -12,6 +12,19 @@
 	 background : rgb(200, 200, 200);
 	 cursor: pointer;
 	}
+	
+	.table tr {
+		border-bottom : 1px solid #999;
+	}
+	.table {
+		padding : 30px;
+		margin : 0px auto;
+		font-size : 20px;
+		font-weight: normal;
+	}
+	.table thead {
+		border-top : 2px solid #666;
+	}
 </style>
 
 </head>
