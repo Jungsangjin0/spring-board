@@ -32,3 +32,9 @@
 
 - 게시판 디테일페이지 작성
 - controller, service, repository, mapper 작성
+
+## 2021-06-19 
+- 게시판 수정
+- controller, service, repository, mapper 작성
+
+
