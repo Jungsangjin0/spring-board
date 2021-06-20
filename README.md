@@ -37,4 +37,7 @@
 - 게시판 수정
 - controller, service, repository, mapper 작성
 
+## 2021-06-20
+- 게시판 페이징 검색 구현
+- controller, service, repository, mapper 수정
 
