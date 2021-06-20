@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.js.board.model.dto.BoardDTO;
+import com.js.board.model.dto.PageInfoDTO;
 import com.js.board.model.repository.BoardRepository;
 
 @Service("boardService")
@@ -22,12 +23,13 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	/*board list를 조회할 때 사용하는 service method
+	 * @param pageInfo 페이징 객체
 	 * @return board List 정보 
 	 * */
 	@Override
-	public List<BoardDTO> selectBoardList() {
+	public List<BoardDTO> selectBoardList(PageInfoDTO pageInfo) {
 		
-		return boardRepository.selectBoardList(sqlSession);
+		return boardRepository.selectBoardList(sqlSession, pageInfo);
 	}
 
 	/*
@@ -50,6 +52,16 @@ public class BoardServiceImpl implements BoardService{
 	public void updateById(BoardDTO board) {
 		
 		boardRepository.updateById(board, sqlSession);
+	}
+
+	/*
+	 *count board list method
+	 *@return count board list  
+	 * */
+	@Override
+	public int totalCount() {
+		
+		return boardRepository.totalCount(sqlSession);
 	}
 
 }

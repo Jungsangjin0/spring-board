@@ -19,20 +19,44 @@
  	</resultMap> -->
  		
  
- 	<select id="selectList" resultType="com.js.board.model.dto.BoardDTO">
+ 	<select id="selectList" resultType="com.js.board.model.dto.BoardDTO" parameterType="com.js.board.model.dto.PageInfoDTO">
  		SELECT 
- 		       BOARD_ID
-			 , BOARD_CATEGORY
-			 , BOARD_WRITER
-			 , BOARD_TITLE
-			 , BOARD_TEXT
-			 , BOARD_DATE
-		     , BOARD_REPLY
-			 , BOARD_LEVEL
-			 , BOARD_STATUS
-		FROM BOARD
-		WHERE BOARD_LEVEL = 0
-		AND BOARD_STATUS = 'N'
+               A.RNUM
+             , A.BOARD_ID
+             , A.BOARD_CATEGORY
+             , A.BOARD_WRITER
+             , A.BOARD_TITLE
+             , A.BOARD_TEXT
+             , A.BOARD_DATE
+             , A.BOARD_REPLY
+             , A.BOARD_LEVEL
+             , A.BOARD_STATUS
+        FROM(SELECT ROWNUM AS RNUM 
+                  , B.BOARD_ID
+                  , B.BOARD_CATEGORY
+                  , B.BOARD_WRITER
+                  , B.BOARD_TITLE
+                  , B.BOARD_TEXT
+                  , B.BOARD_DATE
+                  , B.BOARD_REPLY
+                  , B.BOARD_LEVEL
+                  , B.BOARD_STATUS
+             FROM(SELECT C.BOARD_ID
+                       , C.BOARD_CATEGORY
+                       , C.BOARD_WRITER
+                       , C.BOARD_TITLE
+                       , C.BOARD_TEXT
+                       , C.BOARD_DATE
+                       , C.BOARD_REPLY
+                       , C.BOARD_LEVEL
+                       , C.BOARD_STATUS
+                  FROM BOARD C
+                  WHERE BOARD_LEVEL = 0
+                  AND BOARD_STATUS = 'N'
+                  ORDER BY C.BOARD_ID DESC
+                 ) B
+             )A
+       WHERE A.RNUM BETWEEN #{startRow} AND #{endRow}
  	</select>
  	
  	<select id="selectById" resultType="com.js.board.model.dto.BoardDTO" parameterType="_int">
@@ -62,5 +86,13 @@
  		    BOARD_ID = #{board_id}
  	</update>
  	
+ 	
+ 	<select id="totalCount" resultType="_int">
+ 		SELECT 
+ 		       COUNT(*)
+ 		FROM BOARD
+ 		WHERE BOARD_LEVEL = 0
+ 		AND BOARD_STATUS = 'N'
+ 	</select>
  	
  </mapper>
