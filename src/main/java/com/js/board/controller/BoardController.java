@@ -117,4 +117,27 @@ public class BoardController {
 		return "redirect:/board/" + board.getBoard_id();
 		
 	}
+	
+	/*
+	 * 작성 페이지 controller
+	 * */
+	@RequestMapping(value="/write", method = RequestMethod.GET)
+	public String write() {
+		
+		return "board/writeForm";
+	}
+	
+	/*
+	 * 작성 페이지 controller
+	 * 
+	 * */
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String write(@ModelAttribute BoardDTO board) {
+		
+		int boardNumber = boardService.insertBoard(board);
+		
+		return "redirect:/board/" + boardNumber;
+	}
+	
 }
+

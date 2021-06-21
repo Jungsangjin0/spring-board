@@ -19,4 +19,7 @@ public interface BoardService {
 	/*count board*/
 	public int totalCount();
 
+	/*insert board*/
+	public int insertBoard(BoardDTO board);
+
 }

@@ -71,10 +71,9 @@ table.table2 td {
 				<ul class="board-ul">
 					<li>
 						<span class="ul-span">제목 : </span>
-						<input type="text" placeholder="제목을 입력해 주세요" id="title"></li>
+						<input type="text" placeholder="제목을 입력해 주세요" name="board_title"></li>
 					<li style="margin-top : 30px;">
-						<textarea rows="25" cols="88" id="content">
-						</textarea>
+						<textarea rows="25" cols="88" name="board_text"></textarea>
 					</li>
 					<li>
 						<div style="text-align: right; padding-right:28px; margin-top : 10px;">

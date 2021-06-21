@@ -58,5 +58,25 @@ public class BoardRepositoryImpl implements BoardRepository{
 		
 		return sqlSession.selectOne("board.totalCount");
 	}
+
+	/*
+	 * board sequence nextval 조회
+	 * param sqlSession 쿼리문 실행할 객체
+	 * return 시퀀스 nextval 값
+	 * */
+	@Override
+	public int selectNextVal(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("board.boardNextval");
+	}
+
+	/*
+	 * board 정보 db에 입력(insert)
+	 * param sqlSession 쿼리문 실행할 객체
+	 * param board 입력한 board정보
+	 * */
+	@Override
+	public void insertBoard(SqlSessionTemplate sqlSession, BoardDTO board) {
+		sqlSession.insert("board.insertBoard", board);
+	}
 	
 }

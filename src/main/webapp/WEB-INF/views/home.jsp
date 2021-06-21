@@ -6,5 +6,8 @@
 </head>
 <body>
 <jsp:include page="common/sidebar.jsp"/>
+<div class="content">
+	<h1 style="text-align: center;">컴 백 홈</h1>
+</div>
 </body>
 </html>

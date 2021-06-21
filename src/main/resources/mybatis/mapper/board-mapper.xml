@@ -95,4 +95,17 @@
  		AND BOARD_STATUS = 'N'
  	</select>
  	
+ 	<select id="boardNextval" resultType="_int">
+ 		SELECT
+ 			  SEQ_BOARD.NEXTVAL
+ 		FROM DUAL
+ 	</select>
+ 	
+ 	<select id="insertBoard" parameterType="com.js.board.model.dto.BoardDTO">
+ 		INSERT INTO BOARD(BOARD_ID, BOARD_CATEGORY, BOARD_WRITER,
+                          BOARD_TITLE, BOARD_TEXT)
+		           VALUES(#{board_id}, '0', 'sj', 
+		                  #{board_title}, #{board_text})
+ 	</select>
+ 	
  </mapper>

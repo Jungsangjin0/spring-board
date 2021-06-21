@@ -64,4 +64,19 @@ public class BoardServiceImpl implements BoardService{
 		return boardRepository.totalCount(sqlSession);
 	}
 
+	/*
+	 * 
+	 * */
+	@Override
+	public int insertBoard(BoardDTO board) {
+		
+		int boardNumber = boardRepository.selectNextVal(sqlSession);
+		
+		board.setBoard_id(boardNumber);
+		boardRepository.insertBoard(sqlSession, board);
+		
+		
+		return boardNumber;
+	}
+
 }

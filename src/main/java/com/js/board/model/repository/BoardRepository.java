@@ -20,5 +20,11 @@ public interface BoardRepository {
 
 	/*count board*/
 	public int totalCount(SqlSessionTemplate sqlSession);
+
+	/*select board nextVal*/
+	public int selectNextVal(SqlSessionTemplate sqlSession);
+
+	/*insert board*/
+	public void insertBoard(SqlSessionTemplate sqlSession, BoardDTO board);
 	
 }
