@@ -30,5 +30,8 @@ public interface BoardRepository {
 
 	/*search count*/
 	public int keywordCount(SqlSessionTemplate sqlSession, SearchDTO search);
+
+	/*delete board*/
+	public void deleteBoard(SqlSessionTemplate sqlSession, int boardId);
 	
 }

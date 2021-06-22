@@ -88,5 +88,16 @@ public class BoardRepositoryImpl implements BoardRepository{
 		
 		return sqlSession.selectOne("board.keywordCount", search);
 	}
+
+	/*
+	 * 게시물 삭제
+	 * @param sqlSession 쿼리문 실행할 객체
+	 * @param boardId 게시물 번호
+	 * */
+	@Override
+	public void deleteBoard(SqlSessionTemplate sqlSession, int boardId) {
+		
+		sqlSession.delete("board.deleteBoard", boardId);
+	}
 	
 }

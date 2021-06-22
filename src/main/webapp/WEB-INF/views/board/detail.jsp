@@ -93,7 +93,8 @@ table.table2 td {
 			<div class="top-title">
 				<span class="top-span">${requestScope.board.board_id }번 게시물</span>
 			</div>
-			<form method="POST" action="write">
+			<form method="POST" action="write" id="detail-form">
+				<input type="hidden" name="boardId" value="${requestScope.board.board_id }">
 				<ul class="board-ul">
 					<li style="text-align: left; margin-top : 20px;">
 						<span class="ul-span">제목 : </span>
@@ -115,12 +116,13 @@ table.table2 td {
 					</li>
 					<li style="margin-top :40px; border-top : 1px solid #999;">
 						<div style="height :200px;">
-							<p style="text-align: center;">${requestScope.board.board_text }</p>
+							<p style="text-align:  center;">${requestScope.board.board_text }</p>
 						</div>
 					</li>
 					<li style="border-top : 1px solid #999;">
 						<div style="text-align: right;  margin-top : 30px;">
 							<button id="modify" type="button">수정하기</button>
+							<button id="delete" type="button">삭제하기</button>
 							<button id="back" type="button">뒤로가기</button>
 						</div>
 					</li> 
@@ -141,6 +143,14 @@ table.table2 td {
 			$("#modify").on("click", function() {
 				//location.href = "../modify/" + "${board.board_id}"	
 				location.href="${pageContext.servletContext.contextPath}/modify/" + "${board.board_id}"
+			})
+			
+			/*삭제하기*/
+			$("#delete").on("click", function(){
+				
+				$("#detail-form").attr("action", "../delete");
+				$("#detail-form").submit();
+				
 			})
 			
 		})

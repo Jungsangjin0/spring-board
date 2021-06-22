@@ -113,8 +113,7 @@
 							<button id="nextPage">></button>
 						</c:if>
 
-						<button id="maxPage">>></button>
-						<!-- 10 -->
+						<button id="maxPage">>></button> <!-- 10 -->
 
 					</c:when>
 
@@ -168,7 +167,8 @@
 						<option value="writer"<c:if test="${requestScope.pageInfo.type eq 'writer' }">selected</c:if>>작성자</option>
 						<option value="title" <c:if test="${requestScope.pageInfo.type eq 'title' }">selected</c:if>>제목</option>
 						<option value="text" <c:if test="${requestScope.pageInfo.type eq 'text' }">selected</c:if>>내용</option>
-					</select> <input type="search" id="searchValue" name="keyword" value="${requestScope.pageInfo.keyword }">
+					</select>
+					 <input type="search" id="searchValue" name="keyword" value="${requestScope.pageInfo.keyword }">
 					<button type="button" id="search">검색하기</button>
 				</div>
 			</form>

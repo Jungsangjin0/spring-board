@@ -140,4 +140,11 @@
 		                  #{board_title}, #{board_text})
  	</select>
  	
+ 	
+ 	<delete id="deleteBoard" parameterType="_int">
+ 		UPDATE BOARD
+ 		SET BOARD_STATUS = 'Y'
+ 		WHERE BOARD_ID = #{boarId}
+ 	</delete>
+ 	
  </mapper>

@@ -83,5 +83,15 @@ public class BoardServiceImpl implements BoardService{
 		return boardNumber;
 	}
 
+	/*
+	 * delete board method
+	 * @param boardId 게시물 번호
+	 * */
+	@Override
+	public void deleteBoard(int boardId) {
+		
+		boardRepository.deleteBoard(sqlSession, boardId);
+	}
+
 
 }

@@ -1,6 +1,7 @@
 package com.js.board.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -141,6 +142,16 @@ public class BoardController {
 		int boardNumber = boardService.insertBoard(board);
 		
 		return "redirect:/board/" + boardNumber;
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String delete(@RequestParam int boardId) {
+		
+	
+		boardService.deleteBoard(boardId);
+		
+		
+		return "redirect:/board";
 	}
 	
 }

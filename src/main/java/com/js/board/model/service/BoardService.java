@@ -23,5 +23,8 @@ public interface BoardService {
 	/*insert board*/
 	public int insertBoard(BoardDTO board);
 
+	/*delete board*/
+	public void deleteBoard(int boardId);
+
 
 }
