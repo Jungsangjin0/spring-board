@@ -206,7 +206,7 @@ cursor: pointer;
             <li><a href="${pageContext.servletContext.contextPath }">
                     <p>홈</p>
                 </a></li>
-            <li><a href="${pageContext.servletContext.contextPath }/board?currentPage=1">
+            <li><a href="${pageContext.servletContext.contextPath }/board">
                     <p>페이징 게시판</p>
                 </a></li>
             <li><a href="#"><p>더보기 게시판</p>

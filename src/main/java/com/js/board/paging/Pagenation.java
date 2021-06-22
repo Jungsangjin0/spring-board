@@ -1,10 +1,12 @@
 package com.js.board.paging;
 
 import com.js.board.model.dto.PageInfoDTO;
+import com.js.board.model.dto.SearchDTO;
 
 public class Pagenation {
 
-	public static PageInfoDTO getPageInfo(int pageNo, int totalCount) {
+	public static PageInfoDTO getPageInfo(int pageNo, int totalCount, PageInfoDTO search) {
+		
 		
 		int maxPage;
 		int startPage;
@@ -58,8 +60,16 @@ public class Pagenation {
 		startRow = (pageNo - 1) * limit + 1;
 		endRow = startRow + limit - 1;
 		
+		search.setPageNo(pageNo);
+		search.setTotalCount(totalCount);
+		search.setLimit(limit);
+		search.setButtonAmount(buttonAmount);
+		search.setMaxPage(maxPage);
+		search.setStartPage(startPage);
+		search.setEndPage(endPage);
+		search.setStartRow(startRow);
+		search.setEndRow(endRow);
 		
-		
-		return new PageInfoDTO(pageNo, totalCount, limit, buttonAmount, maxPage, startPage, endPage, startRow, endRow); 
+		return search; 
 	}
 }

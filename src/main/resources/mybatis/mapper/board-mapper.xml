@@ -19,7 +19,7 @@
  	</resultMap> -->
  		
  
- 	<select id="selectList" resultType="com.js.board.model.dto.BoardDTO" parameterType="com.js.board.model.dto.PageInfoDTO">
+ 	<select id="selectList" resultType="com.js.board.model.dto.BoardDTO" parameterType="com.js.board.model.dto.SearchDTO">
  		SELECT 
                A.RNUM
              , A.BOARD_ID
@@ -53,6 +53,21 @@
                   FROM BOARD C
                   WHERE BOARD_LEVEL = 0
                   AND BOARD_STATUS = 'N'
+                  <if test="(type != null and keyword != null) and (type != '' and keyword != '')">
+	 			      <choose>
+	 				      <when test="type == 'writer'">
+						      AND INSTR(BOARD_WRITER, #{keyword}) > 0 			
+	 					  </when>
+	 					  <when test="type == 'title'">
+	 						  AND INSTR(BOARD_TITLE, #{keyword}) > 0
+	 					  </when>
+	 					  <when test="type == 'text'">
+	 						  AND INSTR(BOARD_TEXT, #{keyword}) > 0
+	 					  </when>
+	 					  <otherwise>
+	 					  </otherwise>
+	 				   </choose>
+			      </if>
                   ORDER BY C.BOARD_ID DESC
                  ) B
              )A
@@ -87,12 +102,29 @@
  	</update>
  	
  	
- 	<select id="totalCount" resultType="_int">
+ 	<select id="totalCount" parameterType="com.js.board.model.dto.SearchDTO" resultType="_int">
  		SELECT 
  		       COUNT(*)
  		FROM BOARD
  		WHERE BOARD_LEVEL = 0
  		AND BOARD_STATUS = 'N'
+ 		
+ 		<if test="(type != null and keyword != null) and (type !='' and keyword != '') ">
+	 		<choose>
+	 			<when test="type == 'writer'">
+					AND INSTR(BOARD_WRITER, #{keyword}) > 0 			
+	 			</when>
+	 			<when test="type == 'title'">
+	 				AND INSTR(BOARD_TITLE, #{keyword}) > 0
+	 			</when>
+	 			<when test="type == 'text'">
+	 				AND INSTR(BOARD_TEXT, #{keyword}) > 0
+	 			</when>
+	 			<otherwise>
+	 			</otherwise>
+	 		</choose>
+ 		</if>
+ 		
  	</select>
  	
  	<select id="boardNextval" resultType="_int">

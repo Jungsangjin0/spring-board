@@ -1,14 +1,13 @@
 package com.js.board.model.repository;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.js.board.model.dto.BoardDTO;
 import com.js.board.model.dto.PageInfoDTO;
+import com.js.board.model.dto.SearchDTO;
 
 @Repository("boardRepository")
 public class BoardRepositoryImpl implements BoardRepository{
@@ -20,9 +19,9 @@ public class BoardRepositoryImpl implements BoardRepository{
 	 * @return db에서 조회한 board List정보
 	 * */
 	@Override
-	public List<BoardDTO> selectBoardList(SqlSessionTemplate sqlSession, PageInfoDTO pageInfo) {
+	public List<BoardDTO> selectBoardList(SqlSessionTemplate sqlSession, PageInfoDTO search) {
 		
-		return sqlSession.selectList("board.selectList", pageInfo);
+		return sqlSession.selectList("board.selectList", search);
 	}
 
 	/*
@@ -54,9 +53,9 @@ public class BoardRepositoryImpl implements BoardRepository{
 	 * @return 보드리스트 갯수
 	 * */
 	@Override
-	public int totalCount(SqlSessionTemplate sqlSession) {
+	public int totalCount(SqlSessionTemplate sqlSession, SearchDTO search) {
 		
-		return sqlSession.selectOne("board.totalCount");
+		return sqlSession.selectOne("board.totalCount", search);
 	}
 
 	/*
@@ -71,12 +70,23 @@ public class BoardRepositoryImpl implements BoardRepository{
 
 	/*
 	 * board 정보 db에 입력(insert)
-	 * param sqlSession 쿼리문 실행할 객체
-	 * param board 입력한 board정보
+	 * @param sqlSession 쿼리문 실행할 객체
+	 * @param board 입력한 board정보
 	 * */
 	@Override
 	public void insertBoard(SqlSessionTemplate sqlSession, BoardDTO board) {
 		sqlSession.insert("board.insertBoard", board);
+	}
+
+	/*
+	 * 조건 검색 게시물 count 
+	 * @param sqlSession 쿼리문 실행할 객체
+	 * @param search 검색 정보가 담겨있는 객체
+	 * */
+	@Override
+	public int keywordCount(SqlSessionTemplate sqlSession, SearchDTO search) {
+		
+		return sqlSession.selectOne("board.keywordCount", search);
 	}
 	
 }

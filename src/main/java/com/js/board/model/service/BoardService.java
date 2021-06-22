@@ -4,11 +4,12 @@ import java.util.List;
 
 import com.js.board.model.dto.BoardDTO;
 import com.js.board.model.dto.PageInfoDTO;
+import com.js.board.model.dto.SearchDTO;
 
 public interface BoardService {
 	
 	/*select board list*/
-	public List<BoardDTO> selectBoardList(PageInfoDTO pageInfo);
+	public List<BoardDTO> selectBoardList(PageInfoDTO search);
 
 	/*select board*/
 	public BoardDTO selectById(int number);
@@ -17,9 +18,10 @@ public interface BoardService {
 	public void updateById(BoardDTO board);
 
 	/*count board*/
-	public int totalCount();
+	public int totalCount(SearchDTO search);
 
 	/*insert board*/
 	public int insertBoard(BoardDTO board);
+
 
 }

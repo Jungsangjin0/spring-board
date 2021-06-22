@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.js.board.model.dto.BoardDTO;
 import com.js.board.model.dto.PageInfoDTO;
+import com.js.board.model.dto.SearchDTO;
 import com.js.board.model.service.BoardService;
 import com.js.board.paging.Pagenation;
 
@@ -36,7 +37,9 @@ public class BoardController {
 	 *@return viewResolver에 전달할 view path String
 	 */
 	@RequestMapping(value ="/board", method = RequestMethod.GET)
-	public String board(Model model, @RequestParam(value="currentPage", defaultValue = "1", required = false) String currentPage) {
+	public String board(Model model,
+			   @RequestParam(value="currentPage", defaultValue = "1", required = false) String currentPage,
+			   @ModelAttribute SearchDTO search) {
 		
 	//====================변경부분==================================	
 		/*기본 페이징 값 1로 설정*/
@@ -56,21 +59,22 @@ public class BoardController {
 			pageNo = page;
 		}
 	//============================================================
+		
 		/*db에 저장되어 있는 게시판 갯수 조회*/
-		int totalCount = boardService.totalCount();
+		int totalCount = boardService.totalCount(search);
 		
 		/*페이징 계산 후 pageInfo에 값을 담는다.*/
-		PageInfoDTO pageInfo = Pagenation.getPageInfo(pageNo, totalCount);
+		search = (SearchDTO)Pagenation.getPageInfo(pageNo, totalCount, search);
 		
 		/*starRow, endRow에 해당하는 list 조회*/
-		List<BoardDTO> list = boardService.selectBoardList(pageInfo);
+		List<BoardDTO> list = boardService.selectBoardList(search);
 		
 		/*model에 담기*/
 		model.addAttribute("list", list);
-		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("pageInfo", search);
 		
 		log.info("list : {}", list);
-		log.info("pageInfo : {}", pageInfo);
+		log.info("pageInfo : {}", search);
 		
 		return "board/board";
 	}

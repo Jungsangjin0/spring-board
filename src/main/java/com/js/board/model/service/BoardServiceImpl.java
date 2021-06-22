@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.js.board.model.dto.BoardDTO;
 import com.js.board.model.dto.PageInfoDTO;
+import com.js.board.model.dto.SearchDTO;
 import com.js.board.model.repository.BoardRepository;
 
 @Service("boardService")
@@ -27,9 +28,9 @@ public class BoardServiceImpl implements BoardService{
 	 * @return board List 정보 
 	 * */
 	@Override
-	public List<BoardDTO> selectBoardList(PageInfoDTO pageInfo) {
+	public List<BoardDTO> selectBoardList(PageInfoDTO search) {
 		
-		return boardRepository.selectBoardList(sqlSession, pageInfo);
+		return boardRepository.selectBoardList(sqlSession, search);
 	}
 
 	/*
@@ -56,16 +57,19 @@ public class BoardServiceImpl implements BoardService{
 
 	/*
 	 *count board list method
+	 *@param search 검색정보가 담겨있는 객체
 	 *@return count board list  
 	 * */
 	@Override
-	public int totalCount() {
+	public int totalCount(SearchDTO search) {
 		
-		return boardRepository.totalCount(sqlSession);
+		return boardRepository.totalCount(sqlSession, search);
 	}
 
 	/*
-	 * 
+	 * board insert method
+	 * @param board 입력한 게시물 정보
+	 * return boardNumber
 	 * */
 	@Override
 	public int insertBoard(BoardDTO board) {
@@ -78,5 +82,6 @@ public class BoardServiceImpl implements BoardService{
 		
 		return boardNumber;
 	}
+
 
 }
