@@ -41,3 +41,11 @@
 - 게시판 페이징 검색 구현
 - controller, service, repository, mapper 수정
 - log4jdbc 
+
+## 2021-06-21 
+- 게시판 검색 페이징 화면 구현
+- jsp
+
+## 2021-06-22
+- 마무리 구현 및 삭제 구현
+- controller, service, repository, mapper 
